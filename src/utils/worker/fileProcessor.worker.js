@@ -235,9 +235,7 @@ class FileProcessorWorker {
   async processExcel(filePath) {
     const workbook = XLSX.readFile(filePath, { sheetRows: 0 }); // Get metadata only
     const sheetName = workbook.SheetNames[0];
-
-    // For large files, use streaming or read in chunks
-    // But for this assignment, your current approach is acceptable
+    
     const sheet = workbook.Sheets[sheetName];
     return XLSX.utils.sheet_to_json(sheet);
   }
